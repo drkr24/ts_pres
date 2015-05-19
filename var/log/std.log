@@ -1,0 +1,45 @@
+info: socket.io started
+[32m>> Load module: NT.App:./app/app[39m
+[36m*** NOTELL 0.0.1 ***
+>> Node version: v0.10.25
+>> Start at port: 9000[39m
+[36m>> Took 235ms to startup.[39m
+[32m>> A connected.[39m
+[32m>> Client count: 1[39m
+[32m>> 21:17:31 Watch: assets/ejs/head.ejs[39m
+[34m>> Watch: assets/ejs/head.ejs[39m
+[32m>> 21:17:31 Watch: assets/ejs/foot.ejs[39m
+[34m>> Watch: assets/ejs/foot.ejs[39m
+[32m>> 21:17:31 Watch: assets/ejs/assets.ejs[39m
+[34m>> Watch: assets/ejs/assets.ejs[39m
+[32m>> 21:17:31 Watch: app/client/ejs/assets.ejs[39m
+[34m>> Watch: app/client/ejs/assets.ejs[39m
+[32m>> 21:17:31 Watch: usr/demo_ppt.ejs[39m
+[34m>> Watch: usr/demo_ppt.ejs[39m
+[32m>> 21:17:31 Watch: app/client/ejs/home.ejs[39m
+[34m>> Watch: app/client/ejs/home.ejs[39m
+[31m>> A GUEST disconnected.[39m
+[32m>> 21:17:32 Watch: assets/css/fonts.styl[39m
+[34m>> Watch: assets/css/fonts.styl[39m
+[32m>> 21:17:32 Watch: assets/css/app.styl[39m
+[34m>> Watch: assets/css/app.styl[39m
+[32m>> 21:17:32 Watch: app/client/css/home.styl[39m
+[34m>> Watch: app/client/css/home.styl[39m
+[32m>> 21:17:32 Watch: app/client/css/custom.styl[39m
+[34m>> Watch: app/client/css/custom.styl[39m
+[32m>> 21:17:32 Watch: assets/js/jquery.helpers.coffee[39m
+[34m>> Watch: assets/js/jquery.helpers.coffee[39m
+[32m>> 21:17:32 Watch: assets/js/_.helpers.coffee[39m
+[34m>> Watch: assets/js/_.helpers.coffee[39m
+[32m>> 21:17:32 Watch: assets/js/app.coffee[39m
+[34m>> Watch: assets/js/app.coffee[39m
+[32m>> 21:17:32 Watch: assets/langs/en.coffee[39m
+[34m>> Watch: assets/langs/en.coffee[39m
+[32m>> 21:17:32 Watch: app/client/js/guest.coffee[39m
+[34m>> Watch: app/client/js/guest.coffee[39m
+[32m>> 21:17:32 Watch: app/client/js/host.coffee[39m
+[34m>> Watch: app/client/js/host.coffee[39m
+[32m>> 21:17:32 Watch: app/client/js/notell.coffee[39m
+[34m>> Watch: app/client/js/notell.coffee[39m
+[32m>> A connected.[39m
+[32m>> Client count: 1[39m

@@ -1,0 +1,366 @@
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+	<section>
+		<img style="max-width:200px;" src="https://secure.gravatar.com/avatar/17e414f1d3c2a1c190a1fe04d9850286?size=496&default=retro" />
+		<h1>TypeScript</h1>
+		<h3>czyli typowana wersja JS</h3>
+		<p>
+			<small>by Michał Durkalec, nr albumu 99909</small>
+		</p>
+	</section>
+
+	<section>
+		<h2>Co to jest TS?</h2>
+		<p>
+			<blockquote class="fragment">
+				&ldquo;TypeScript jest językiem dla rozwijania skalowalnych aplikacji JavaScript'owych. Jest typowanym nadzbiorem języka JavaScript kompilwanym do czystego JavaScript. Dla każdej przeglądarki, każdego hosta, systemu operacyjnego. Open Source
+				&rdquo;
+				<br />typescriptlang.org/
+			</blockquote>
+		</p>
+		<p class="fragment">Projekt jest zarządzany przez Microsoft, ale każdy może wziąć udział w tworzeniu poprzez wysyłanie komentarzy, sugestii i propozycji naprawy błędów. </p>
+	</section>
+
+	<!-- Example of nested vertical slides -->
+	<section>
+			<section id="fragments">
+				<h2>Co oferuje TS?</h2>
+				<p class="fragment">obiektowość i skalowalność..</p>
+				<ol>
+					<li class="fragment"><code>opcjonalne, statyczne typowanie (type checking)</code></li>
+					<li class="fragment"><code>klasy</code></li>
+					<li class="fragment"><code>interfejsy</code></li>
+					<li class="fragment"><code>polimorfizm</code></li>
+					<li class="fragment"><code>moduły</code></li>
+					<li class="fragment"><code>wyrażenia lambda</code></li>
+				</ol>
+			</section>
+	</section>
+
+	<section>
+		<h2>Inne zalety języka TS</h2>
+		<ol>
+			<li class="fragment"><strong>kompatybilnośc z kodem JS</strong> (zewnętrzne biblioteki, kompatybilność wsteczna)</li>
+			<li class="fragment"><strong>darmowy</strong></li>
+			<li class="fragment"><strong>każdy system operacyjny, przeglądarka, node.js</strong></li>
+			<li class="fragment"><strong>kompilacja zamiast interpretowania -> wykrywanie błędów</strong>
+			</li>
+			<li class="fragment"><strong>opcjonalne parametry funkcji</strong>
+			<li class="fragment"><strong>domyślne parametry funkcji</strong>
+		</ol>
+	</section>
+
+	<section>
+		<h2>Składnia języka TS</h2>
+		<p>Podstawowe typty</p>
+		<br />
+		<pre>
+		<code data-trim contenteditable>
+
+// 	Boolean
+	var isDone: boolean = false;
+
+// 	Number
+	var height: number = 6;
+
+// 	String
+	var name: string = "bob";
+		name = 'smith';
+
+// 	Array
+	var list:number[] = [1, 2, 3];
+	var list:Array&lt;number&gt; = [1, 2, 3];
+
+// 	Enum	
+	enum Color {Red, Green, Blue}; // lub enum Color {Red = 1, Green, Blue};
+	var c: Color = Color.Green;
+
+// 	Any - sprawdzanie podczas kompilacji
+	var list:any[] = [1, true, "free"];
+	list[1] = 100;
+
+// 	Void - np. w przypadku funkcji nie zwracających wartości
+	function warnUser(): void {
+		alert("Warning");
+	}	
+
+		</code></pre>
+	</section>
+	<section>
+		<section>
+			<h2>Składnia języka TS</h2>
+			<p>Interfejsy - opisywanie 'kształtu' obiektu</p>
+			<br />		
+			<pre>
+			<code data-trim contenteditable>
+// przykład użycia interfejsu w celu wymagania posiadania pola 
+//	(w tym przypadku pola 'label')	
+
+interface LabelledValue {
+	label: string;
+}
+
+function printLabel(labelledObj: LabelledValue) {
+	console.log(labelledObj.label);
+}
+
+var myObj = {size: 10, label: "Size 10 Object"};
+printLabel(myObj);
+
+			</code></pre>
+		</section>
+		<section>
+			<h2>Składnia języka TS</h2>
+			<p>Interfejsy</p>
+			<br />		
+			<pre>
+			<code data-trim contenteditable>
+// opcjonalne pola 
+// dla definiowania opcji jak traktować obiekt 
+interface SquareConfig {
+	color?: string;
+	width?: number;
+}
+
+function createSquare(config: SquareConfig): {color: string; area: number} {
+	var newSquare = {color: "white", area: 100};
+	
+	if (config.color) {
+		newSquare.color = config.color;
+	}
+	if (config.width) {
+		newSquare.area = config.width * config.width;
+	}
+	return newSquare;
+}
+
+var mySquare = createSquare({color: "black"});
+			</code></pre>
+		</section>
+		<section>
+			<h2>Składnia języka TS</h2>
+			<p>Interfejsy</p>
+			<br />		
+			<pre>
+			<code data-trim contenteditable>
+// implementowanie interfejsu
+interface ClockInterface {
+	currentTime: Date;
+	setTime(d: Date);
+}
+
+class Clock implements ClockInterface  {
+	currentTime: Date;
+	setTime(d: Date) {
+		this.currentTime = d;
+	}
+	constructor(h: number, m: number) { }
+}
+			</code></pre>
+		</section>						
+	</section>
+	<section>
+		<section>
+			<h2>Składnia języka TS</h2>
+			<p>Klasy</p>
+			<br />		
+			<pre>
+			<code data-trim contenteditable>
+class Animal {
+	name:string;
+	constructor(theName: string) { this.name = theName; }
+	move(meters: number = 0) {
+		alert(this.name + " moved " + meters + "m.");
+	}
+}
+
+class Snake extends Animal {
+	constructor(name: string) { super(name); }
+	move(meters = 5) {
+		alert("Slithering...");
+		super.move(meters);
+	}
+}
+
+class Horse extends Animal {
+	constructor(name: string) { super(name); }
+	move(meters = 45) {
+		alert("Galloping...");
+		super.move(meters);
+	}
+}
+
+var sam = new Snake("Sammy the Python");
+var tom: Animal = new Horse("Tommy the Palomino");
+
+sam.move();
+tom.move(34);
+			</code></pre>
+		</section>
+		<section>
+			<h2>Składnia języka TS</h2>
+			<p>Klasy </p>
+			<ul>
+				<li>pola publiczne (domyślnie) </li>
+				<li>prywatne</li>
+				<li>get, set</li>
+				<li>pola statyczne</li>
+			</ul>	
+			<pre>
+			<code data-trim contenteditable>
+var passcode = "secret passcode";
+
+class Employee {
+	private _fullName: string;
+
+	get fullName(): string {
+		return this._fullName;
+	}
+	
+	set fullName(newName: string) {
+		if (passcode && passcode == "secret passcode") {
+			this._fullName = newName;
+		}
+		else {
+			alert("Error: Unauthorized update of employee!");
+		}
+	}
+}
+
+var employee = new Employee();
+employee.fullName = "Bob Smith";
+if (employee.fullName) {
+	alert(employee.fullName);
+}
+
+// pola statyczne
+class Grid {
+	static origin = {x: 0, y: 0};
+	calculateDistanceFromOrigin(point: {x: number; y: number;}) {
+		var xDist = (point.x - Grid.origin.x);
+		var yDist = (point.y - Grid.origin.y);
+		return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
+	}
+	constructor (public scale: number) { }
+}
+			</code></pre>
+		</section>					
+	</section>
+
+	<section>
+		<h2>Moduły</h2>
+		<p>Validation.ts</p>
+		<pre><code data-trim contenteditable>
+module Validation {
+	export interface StringValidator {
+		isAcceptable(s: string): boolean;
+	}
+}			
+		</code></pre>
+		<p>LettersOnlyValidator.ts</p>
+		<pre><code data-trim contenteditable>
+/// &lt;reference path="Validation.ts" /&gt;
+module Validation {
+	var lettersRegexp = /^[A-Za-z]+$/;
+	export class LettersOnlyValidator implements StringValidator {
+		isAcceptable(s: string) {
+			return lettersRegexp.test(s);
+		}
+	}
+}	
+		</code></pre>		
+	</section>
+
+	<section>
+		<h1>DEMO</h1>
+		<p>http://www.typescriptlang.org/Playground</p>
+		
+	</section>
+	<section>
+		<section>
+		<h2>Środowisko</h2>
+		<div class="fragment">
+			<p>wsparcie IDE</p>
+			<ul>
+				<li>Visual Studio (Microsoft)</li>
+				<li>WebStorm i IntelliJ (JetBrains)</li>
+				<li>wtyczki do Eclipse</li>
+				<li>wtyczki do edytorów - Sublime Text, atom itd</li>
+			</ul>
+		</div>
+		</section>
+		<section>
+			<h2>Środowisko</h2>
+			<p>NPM</p>
+			<div class="fragment">
+				
+				<pre><code data-trim contenteditable>
+> npm install -g typescript
+
+# dla pliku greeter.ts
+> tsc greeter.ts
+
+# przykładowy błąd przy kompilacji
+greeter.ts(7,26): Supplied parameters do not match any signature of call target
+				</code></pre>
+			</div>
+		</section>
+		<section>
+			<h2>Środowisko</h2>
+			<p>NPM + grunt</p>
+			<div>
+<pre class="fragment"><code data-trim contenteditable>
+> npm install grunt-typescript --save-dev
+</code></pre>
+
+<pre class="fragment"><code data-trim contenteditable>
+// Gruntfile.js
+grunt.loadNpmTasks('grunt-typescript');
+...
+grunt.initConfig({
+  ...
+  typescript: {
+    base: {
+      src: ['path/to/typescript/files/**/*.ts'],
+      dest: 'where/you/want/your/js/files',
+      options: {
+        module: 'amd', //or commonjs 
+        target: 'es5', //or es3 
+        basePath: 'path/to/typescript/files',
+        sourceMap: true,
+        declaration: true
+      }
+    }
+  },
+  ...
+});
+</code></pre>
+			</div>
+		</section>
+		
+
+	</section>
+
+	<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
+		<section><img src="http://gallery.dpcdn.pl/imgc/UGC/62739/g_-_550x366_-_-_62739x20150501223555_0.jpg" alt="" />
+		<h2>Angular 2</h2>
+		<p>
+			TypeScript wygrał w wyborze języka nadrzędnego dla kolejnej wersji Angulara, pokonując konkurenta - Dart (również od Google) 
+		</p>
+		</section>
+		<section>
+			<img src="http://blogs.msdn.com/resized-image.ashx/__size/550x0/__key/communityserver-blogs-components-weblogfiles/00-00-01-56-67/0820.Sublime_5F00_Intellisense.png" alt="">
+		</section>
+	</section>
+	<section>
+		<h2>KONIEC</h2>
+		<p>źródła</p>
+		<ul>
+			<li>http://www.typescriptlang.org/</li>
+			<li>http://jaxenter.com/angular-typescript-dart-115426.html</li>
+			<li>http://blog.smartbear.com/web-development/typescript-a-new-direction-in-browser-based-applications/</li>
+			<li>http://www.dobreprogramy.pl/mikolaj_s/TypeScript-czyli-typowana-wersja-JavaScript,62739.html</li>
+		</ul>
+	</section>
+</div>
