@@ -1,6 +1,6 @@
 NB.conf = {
 
-	port: 9000
+	port: 80
 
 	load_langs: ['en']
 
